@@ -2,6 +2,8 @@ package ec.edu.espol.Classes;
 
 import java.util.ArrayList;
 
+import ec.edu.espol.Interfaces.Iterator;
+
 public class Empresa {
     
     public static void main(String[] args) {
@@ -31,6 +33,34 @@ public class Empresa {
         productos.add(producto11);
 
         Bodega bodega = new Bodega(productos);
+
+        Iterator iterator1 = bodega.createAProductsIterator();
+        System.out.println("Productos Disponibles:");
+        while(iterator1.hasNext()){
+            Producto producto = (Producto)iterator1.next();
+            System.out.println(producto.getNombre());
+        }
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Productos Disponibles Tienda:");
+        Iterator iterator2 = bodega.createAProductsTIterator();
+        while(iterator2.hasNext()){
+            Producto producto = (Producto)iterator2.next();
+            System.out.println(producto.getNombre());
+        }
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Productos Fallidos:");
+        Iterator iterator3 = bodega.createFailureProductsIterator();
+        while(iterator3.hasNext()){
+            Producto producto = (Producto)iterator3.next();
+            System.out.println(producto.getNombre());
+        }
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Productos en Reparacion:");
+        Iterator iterator4 = bodega.createRepairProductsIterator();
+        while(iterator4.hasNext()){
+            Producto producto = (Producto)iterator4.next();
+            System.out.println(producto.getNombre());
+        }
     }
     
 }
